@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:conv="clr-namespace:ArduLens.Converters"
+             x:Class="ArduLens_prism.Views.DetectedDevicesListPage"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:local="clr-namespace:ArduLens_prism.Resources;assembly=ArduLens_prism"           
+             Title="Select a new device">
+    
+    <ContentPage.Resources>
+        <conv:DeviceMACaddressConverter x:Key="MACconverter"/>
+        <conv:DeviceNameConverter x:Key="NAMEconverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="*, auto" BackgroundColor="{StaticResource BackGroundColor}">
+            <pv:PancakeView Margin="20" BackgroundColor="#32323E" CornerRadius="10">
+                <ListView ItemsSource="{Binding DeviceList}" 
+                      HasUnevenRows="True" RefreshCommand="{Binding RefreshCommand}" 
+                      IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsRefreshing}"
+                      SelectedItem="{Binding SelectedDevice, Mode=TwoWay}"
+                      Margin=" 5, 10" SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <pv:PancakeView Margin="5" BackgroundColor="Transparent" CornerRadius="5"
+                                                Padding="8, 0">
+                                    <pv:PancakeView.Border>
+                                        <pv:Border Thickness="2" Color="DarkGray" DrawingStyle="Outside"/>
+                                    </pv:PancakeView.Border>
+                                    <Grid ColumnDefinitions="auto, *">
+                                        <BoxView BackgroundColor="DarkGray" WidthRequest="4" Grid.Column="0"
+                                            HorizontalOptions="Start" VerticalOptions="FillAndExpand"/>
+                                        <StackLayout Orientation="Vertical" Padding="0, 0">
+                                            <Label Text="{Binding Name, Converter={StaticResource NAMEconverter}}" 
+                                                   FontSize="22"  TextColor="WhiteSmoke" Margin="10, 0"/>
+                                            <BoxView HeightRequest="1" BackgroundColor="DarkGray" HorizontalOptions="FillAndExpand"/>
+                                            <Label Text="{Binding NativeDevice, Converter={StaticResource MACconverter}}"  
+                                                   FontSize="16" TextColor="Gray" Margin="10, 2" VerticalTextAlignment="Center"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </pv:PancakeView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </pv:PancakeView>
+            <StackLayout Orientation="Vertical" Grid.Row="1">
+                <Button Command="{Binding DisconnectCommand}" Margin="20, 0"
+                        Style="{StaticResource ConnectButtonStyle}"
+                        Text="{local:Translate Disconnect}">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsConnected}" Value="False">
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <BoxView BackgroundColor="DarkGray" HeightRequest="1" Margin="20, 0"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0, 0, 0, 10"
+                         VerticalOptions="CenterAndExpand">
+                    <CheckBox  IsChecked="{Binding IsAutoConnect}" Color="White"/>
+
+                    <Label Text="{local:Translate AutoConnect_bt}" FontSize="20"  HorizontalOptions="Center"
+                       VerticalOptions="Center" TextColor="WhiteSmoke"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

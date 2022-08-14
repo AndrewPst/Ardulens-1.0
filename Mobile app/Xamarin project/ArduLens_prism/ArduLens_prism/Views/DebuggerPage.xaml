@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArduLens_prism.Views.DebuggerPage"
+             xmlns:source="clr-namespace:ArduLens_prism.Resources;assembly=ArduLens_prism"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             BackgroundColor="{StaticResource Key=BackGroundColor}"
+             Title="Debugger">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button" x:Key="EnterButtonStyle">
+                <Setter Property="Margin" Value="4, 10"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <pv:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="End"  
+                    BackgroundColor="{StaticResource Key=BackGroundColor}" CornerRadius="20" Margin="15, 2">
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding Messages}" Margin="10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <pv:PancakeView>
+                            <StackLayout>
+                                <Label Text="{Binding Time}" FontSize="12" TextColor="LightGreen"/>
+                                <Label Text="{Binding IsUsers}" FontSize="14" TextColor="LightPink"/>
+                                <Label Text="{Binding Text}" FontSize="18" TextColor="WhiteSmoke"/>
+                                <BoxView HeightRequest="2" BackgroundColor="Gray" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </pv:PancakeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <pv:PancakeView HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" 
+                            BackgroundColor="#464758" Margin="4, 4" CornerRadius="15">
+                <StackLayout>
+                    <ScrollView Orientation="Horizontal" Margin="10, 0">
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="Last" Style="{StaticResource EnterButtonStyle}"   Command="{Binding SendLastCommand}"/>
+                            <Button Text="#" Style="{StaticResource EnterButtonStyle}"      Command="{Binding PastText}" CommandParameter="#"/>
+                            <Button Text="|" Style="{StaticResource EnterButtonStyle}"      Command="{Binding PastText}" CommandParameter="|"/>
+                            <Button Text="cmd" Style="{StaticResource EnterButtonStyle}"    Command="{Binding PastText}" CommandParameter="cmd"/>
+                            <Button Text="n_page" Style="{StaticResource EnterButtonStyle}" Command="{Binding PastText}" CommandParameter="n_page"/>
+                            <Button Text="u_page" Style="{StaticResource EnterButtonStyle}" Command="{Binding PastText}" CommandParameter="u_Page"/>
+                        </StackLayout>
+                    </ScrollView>
+                    <Grid ColumnDefinitions="*, 70" HorizontalOptions="Fill">
+                        <Editor HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" PlaceholderColor="Gray"
+                                Text="{Binding UserText, Mode=TwoWay}"
+                                BackgroundColor="Transparent" Margin="10, 0" Placeholder="Enter data" Grid.Column="0"/>
+                        <Button Grid.Column="1" Text="Send" Margin="4" CornerRadius="20" Command="{Binding SendCommand}"
+                                FontAttributes="Bold" FontSize="16" BackgroundColor="LightGray"/>
+                    </Grid>
+                </StackLayout>
+            </pv:PancakeView> 
+        </StackLayout>
+    </pv:PancakeView>
+</ContentPage>

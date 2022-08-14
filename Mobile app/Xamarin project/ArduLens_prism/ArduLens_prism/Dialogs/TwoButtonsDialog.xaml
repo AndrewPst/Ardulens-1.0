@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pv:PancakeView xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:prism="http://prismlibrary.com"
+                prism:ViewModelLocator.AutowireViewModel="True"
+                x:Class="ArduLens_prism.Dialogs.TwoButtonsDialog"
+                xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                BackgroundColor="{StaticResource BackGroundColor}" CornerRadius="5, 20, 20, 5"  
+                WidthRequest="200">
+    <pv:PancakeView.Border>
+        <pv:Border Thickness="2" Color="White"/>
+    </pv:PancakeView.Border>
+    <StackLayout>
+        <Label Text="{Binding Title}" TextColor="WhiteSmoke" HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Start" FontSize="28" LineBreakMode="WordWrap"
+               Margin="10, 0"/>
+        <Label Text="{Binding Message}" TextColor="Gray" FontSize="20" 
+               LineBreakMode="WordWrap" HorizontalTextAlignment="Start"
+               VerticalTextAlignment="Center"
+               Margin="10, 0, 10, 10"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Button Text="No" Style="{StaticResource ButtonBorder}"
+                    HorizontalOptions="StartAndExpand"
+                    Command="{Binding CloseCommand}" CommandParameter="no" CornerRadius="5"/>
+            <Button Text="Yes" Style="{StaticResource ButtonFill}"
+                    Command="{Binding CloseCommand}" CommandParameter="yes" CornerRadius="5"
+                    HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+
+    </StackLayout>
+</pv:PancakeView>

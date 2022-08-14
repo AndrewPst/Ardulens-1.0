@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pv:PancakeView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArduLens_prism.Dialogs.LanguageChangerDialog"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             BackgroundColor="{StaticResource BackGroundColor}" CornerRadius="5, 20, 20, 5">
+    <pv:PancakeView.Border>
+        <pv:Border Thickness="2" Color="White"/>
+    </pv:PancakeView.Border>
+    <StackLayout VerticalOptions="CenterAndExpand" Margin="20" HorizontalOptions="CenterAndExpand">
+        <!--<ListView ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}" 
+                  Margin="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding Name}" TextColor="White"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+        <CollectionView ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}" 
+                        WidthRequest="120" HeightRequest="150" VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand" SelectionMode="Single" >
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="20" Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <pv:PancakeView Margin="10" BackgroundColor="White" CornerRadius="5">
+                        <pv:PancakeView.Border>
+                            <pv:Border Thickness="2" Color="White"/>
+                        </pv:PancakeView.Border>
+                        <Label Text="{Binding Name}" TextColor="Black" FontAttributes="Bold" FontSize="20" 
+                               HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </pv:PancakeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--<Button Text="Select" Command="{Binding SelectCommand}"/>-->
+    </StackLayout>
+
+
+</pv:PancakeView>

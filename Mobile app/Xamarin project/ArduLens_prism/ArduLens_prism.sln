@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduLens_prism", "ArduLens_prism\ArduLens_prism.csproj", "{C8BC9B00-71A8-4576-90E8-D1668886A892}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduLens_prism.Android", "ArduLens_prism.Android\ArduLens_prism.Android.csproj", "{ED8E7BCF-2B9F-487C-B7D2-6C05ED69947D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8BC9B00-71A8-4576-90E8-D1668886A892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8BC9B00-71A8-4576-90E8-D1668886A892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8BC9B00-71A8-4576-90E8-D1668886A892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8BC9B00-71A8-4576-90E8-D1668886A892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED8E7BCF-2B9F-487C-B7D2-6C05ED69947D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED8E7BCF-2B9F-487C-B7D2-6C05ED69947D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED8E7BCF-2B9F-487C-B7D2-6C05ED69947D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ED8E7BCF-2B9F-487C-B7D2-6C05ED69947D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED8E7BCF-2B9F-487C-B7D2-6C05ED69947D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED8E7BCF-2B9F-487C-B7D2-6C05ED69947D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61AE56BB-2516-430C-85AE-6213F8C85F12}
+	EndGlobalSection
+EndGlobal
